@@ -21,15 +21,22 @@ async function run() {
 
         const database = client.db('edonEduSystem');
         const coursesCollection = database.collection('courses');
-       
+        const instructorsCollection = database.collection('instructors');
 
-       // Get Courses API
-       app.get('/courses', async (req, res) => {
-        const cursor = coursesCollection.find({});
-        const course = await cursor.toArray();
-        res.send(course);
-    });
 
+        // Get Courses API
+        app.get('/courses', async (req, res) => {
+            const cursor = coursesCollection.find({});
+            const course = await cursor.toArray();
+            res.send(course);
+        });
+
+        // Get Courses API
+        app.get('/instructors', async (req, res) => {
+            const cursor = instructorsCollection.find({});
+            const instructor = await cursor.toArray();
+            res.send(instructor);
+        });
 
     }
     finally {
